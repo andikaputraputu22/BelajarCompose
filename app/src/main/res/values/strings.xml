@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">BelajarCompose</string>
+    <string name="happy_birthday_text">Happy Birthday Andika!</string>
+    <string name="signature_text">from Ratih</string>
+    <string name="title_activity_article">ArticleActivity</string>
+    <string name="article_title">Jetpack Compose Tutorial</string>
+    <string name="article_description1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ultrices tortor eget semper porta. In et ullamcorper lacus. Ut iaculis lorem ac eros gravida luctus.</string>
+    <string name="article_description2">Maecenas eget sem luctus elit cursus efficitur eu id orci. Suspendisse augue purus, egestas non purus imperdiet, venenatis faucibus urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin ut tincidunt mi. Nunc arcu lorem, euismod ut sapien quis, convallis volutpat magna.</string>
+    <string name="title_activity_task">TaskActivity</string>
+    <string name="title_activity_quadrant">QuadrantActivity</string>
 </resources>
