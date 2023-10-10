@@ -19,6 +19,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -61,10 +62,18 @@ fun Quadrant() {
 fun RowContent1() {
     Row {
         Box(modifier = Modifier.weight(1f)) {
-            BoxContent(backgroundColor = Quadrant1, title = "test1", description = "test")
+            BoxContent(
+                backgroundColor = Quadrant1,
+                title = stringResource(R.string.title_quadrant1),
+                description = stringResource(R.string.description_quadrant1)
+            )
         }
         Box(modifier = Modifier.weight(1f)) {
-            BoxContent(backgroundColor = Quadrant2, title = "test2", description = "test")
+            BoxContent(
+                backgroundColor = Quadrant2,
+                title = stringResource(R.string.title_quadrant2),
+                description = stringResource(R.string.description_quadrant2)
+            )
         }
     }
 }
@@ -73,10 +82,18 @@ fun RowContent1() {
 fun RowContent2() {
     Row {
         Box(modifier = Modifier.weight(1f)) {
-            BoxContent(backgroundColor = Quadrant3, title = "test3", description = "test")
+            BoxContent(
+                backgroundColor = Quadrant3,
+                title = stringResource(R.string.title_quadrant3),
+                description = stringResource(R.string.description_quadrant3)
+            )
         }
         Box(modifier = Modifier.weight(1f)) {
-            BoxContent(backgroundColor = Quadrant4, title = "test4", description = "test")
+            BoxContent(
+                backgroundColor = Quadrant4,
+                title = stringResource(R.string.title_quadrant4),
+                description = stringResource(R.string.description_quadrant4)
+            )
         }
     }
 }
@@ -95,11 +112,13 @@ fun BoxContent(backgroundColor: Color, title: String, description: String) {
         Text(
             text = title,
             fontWeight = FontWeight.Bold,
+            color = Color.Black,
             modifier = Modifier
                 .padding(bottom = 16.dp)
         )
         Text(
             text = description,
+            color = Color.Black,
             textAlign = TextAlign.Justify
         )
     }

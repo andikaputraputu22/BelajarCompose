@@ -8,4 +8,14 @@
     <string name="article_description2">Maecenas eget sem luctus elit cursus efficitur eu id orci. Suspendisse augue purus, egestas non purus imperdiet, venenatis faucibus urna. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin ut tincidunt mi. Nunc arcu lorem, euismod ut sapien quis, convallis volutpat magna.</string>
     <string name="title_activity_task">TaskActivity</string>
     <string name="title_activity_quadrant">QuadrantActivity</string>
+    <string name="alert_task_completed">All tasks completed</string>
+    <string name="alert_nice_work">Nice work!</string>
+    <string name="title_quadrant1">Text composable</string>
+    <string name="title_quadrant2">Image composable</string>
+    <string name="title_quadrant3">Row composable</string>
+    <string name="title_quadrant4">Column composable</string>
+    <string name="description_quadrant1">Displays text and follows the recommended Material Design guidelines.</string>
+    <string name="description_quadrant2">Creates a composable that lays out and draws a given Painter class object.</string>
+    <string name="description_quadrant3">A layout composable that places its children in a horizontal sequence.</string>
+    <string name="description_quadrant4">A layout composable that places its children in a vertical sequence.</string>
 </resources>
