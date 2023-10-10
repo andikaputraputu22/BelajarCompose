@@ -18,4 +18,6 @@
     <string name="description_quadrant2">Creates a composable that lays out and draws a given Painter class object.</string>
     <string name="description_quadrant3">A layout composable that places its children in a horizontal sequence.</string>
     <string name="description_quadrant4">A layout composable that places its children in a vertical sequence.</string>
+    <string name="title_activity_card">CardActivity</string>
+    <string name="title_activity_main2">MainActivity2</string>
 </resources>
