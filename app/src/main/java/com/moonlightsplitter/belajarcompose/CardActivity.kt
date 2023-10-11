@@ -4,12 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -23,6 +26,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -31,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.moonlightsplitter.belajarcompose.data.model.ProgrammerModel
 import com.moonlightsplitter.belajarcompose.ui.theme.BelajarComposeTheme
+import com.moonlightsplitter.belajarcompose.ui.theme.Quadrant1
 
 class CardActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +45,7 @@ class CardActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Quadrant1
                 ) {
                     val data = ProgrammerModel(
                         "Andika Putra",
@@ -63,57 +68,51 @@ fun CardName(data: ProgrammerModel) {
     ) {
         Column(
             modifier = Modifier
-            .weight(6f)
-            .fillMaxHeight(),
+                .weight(6f)
+                .fillMaxHeight(),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally) {
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             ContentName(data = data)
         }
         Column(modifier = Modifier
             .weight(1f)
             .fillMaxHeight()
             .padding(bottom = 16.dp),
-            verticalArrangement = Arrangement.Bottom) {
+            verticalArrangement = Arrangement.Bottom,
+        ) {
             Info(icon = Icons.Rounded.Phone, data = data.phone)
             Info(icon = Icons.Rounded.Share, data = data.socialMedia)
             Info(icon = Icons.Rounded.Email, data = data.email)
         }
-//        ContentName(data = data)
     }
-
 }
 
 @Composable
 fun ContentName(data: ProgrammerModel) {
     val image = painterResource(R.drawable.android_logo)
-
-        Image(painter = image, contentDescription = null, Modifier.size(100.dp))
-        Text(
-            text = data.name,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            text = data.job
-        )
-
-}
-
-@Composable
-fun ContentInfo(data: ProgrammerModel) {
     Box(
-        contentAlignment = Alignment.BottomCenter
+        modifier = Modifier
+            .size(120.dp)
+            .padding(8.dp)
+            .background(color = Color.DarkGray, MaterialTheme.shapes.medium)
     ) {
-        Column {
-            Info(icon = Icons.Rounded.Phone, data = data.phone)
-            Info(icon = Icons.Rounded.Share, data = data.socialMedia)
-            Info(icon = Icons.Rounded.Email, data = data.email)
-        }
+        Image(painter = image, contentDescription = null)
     }
+    Text(
+        text = data.name,
+        fontSize = 48.sp,
+        fontWeight = FontWeight.Bold
+    )
+    Spacer(Modifier.height(8.dp))
+    Text(
+        text = data.job
+    )
 }
 
 @Composable
 fun Info(icon: ImageVector, data: String) {
+    Spacer(Modifier.height(8.dp))
     Row {
         Icon(icon, contentDescription = null)
         Text(
@@ -122,14 +121,6 @@ fun Info(icon: ImageVector, data: String) {
                 .padding(start = 8.dp)
         )
     }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
 }
 
 @Preview(showBackground = true)
