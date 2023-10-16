@@ -13,9 +13,9 @@
         android:theme="@style/Theme.BelajarCompose"
         tools:targetApi="31">
         <activity
-            android:name=".TipActivity"
+            android:name=".ArtActivity"
             android:exported="true"
-            android:label="@string/title_activity_tip"
+            android:label="@string/title_activity_art"
             android:theme="@style/Theme.BelajarCompose">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TipActivity"
+            android:exported="false"
+            android:label="@string/title_activity_tip"
+            android:theme="@style/Theme.BelajarCompose" />
         <activity
             android:name=".CardActivity"
             android:exported="false"
