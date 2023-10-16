@@ -4,29 +4,22 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -35,7 +28,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.moonlightsplitter.belajarcompose.data.model.ArtModel
 import com.moonlightsplitter.belajarcompose.ui.theme.BelajarComposeTheme
+
+val artList = listOf(
+    ArtModel(R.drawable.art1, "Keagungan Tuhan yang maha kuasa", "William Tani"),
+    ArtModel(R.drawable.art2, "Senyuman alam yang penuh kasih sayang", "Robert Lawnsky"),
+    ArtModel(R.drawable.art3, "Membeku dan kedinginan yang luar biasa", "Susi Wibowo")
+)
 
 class ArtActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +56,9 @@ class ArtActivity : ComponentActivity() {
 
 @Composable
 fun ParentContent() {
+    var index by remember { mutableStateOf(0) }
+    val size = artList.size
+    val data = artList[index]
     ConstraintLayout(modifier = Modifier
         .fillMaxSize()
         .padding(start = 16.dp, end = 16.dp)
@@ -64,7 +67,7 @@ fun ParentContent() {
         val bottomGuideLine = createGuidelineFromBottom(16.dp)
         val topGuideLine = createGuidelineFromTop(16.dp)
         Image(
-            painter = painterResource(id = R.drawable.art1),
+            painter = painterResource(data.image),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -72,8 +75,10 @@ fun ParentContent() {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     top.linkTo(topGuideLine)
+                    bottom.linkTo(containerDescription.top)
                 }
                 .fillMaxWidth()
+                .height(IntrinsicSize.Max)
         )
         Column(
             modifier = Modifier
@@ -82,18 +87,20 @@ fun ParentContent() {
                     bottom.linkTo(containerButton.top)
                 }
                 .fillMaxWidth()
-                .padding(bottom = 64.dp),
+                .padding(bottom = 32.dp),
             horizontalAlignment = Alignment.Start
         ) {
             Text(
-                text = "Test Test",
-                fontSize = 24.sp
+                text = data.description,
+                fontSize = 24.sp,
+                maxLines = 2
             )
             Spacer(modifier = Modifier.height(6.dp))
             Text(
-                text = "Hallo",
+                text = data.author,
                 fontWeight = FontWeight.Bold,
-                fontSize = 14.sp
+                fontSize = 14.sp,
+                maxLines = 1
             )
         }
         Row(
@@ -106,7 +113,11 @@ fun ParentContent() {
         ) {
             Button(
                 modifier = Modifier.weight(1f),
-                onClick = {}) {
+                onClick = {
+                    if (index > 0) {
+                        index--
+                    }
+                }) {
                 Text(
                     text = stringResource(R.string.previous)
                 )
@@ -114,7 +125,11 @@ fun ParentContent() {
             Spacer(modifier = Modifier.width(8.dp))
             Button(
                 modifier = Modifier.weight(1f),
-                onClick = {}) {
+                onClick = {
+                    if (index < size - 1) {
+                        index++
+                    }
+                }) {
                 Text(
                     text = stringResource(R.string.next)
                 )
