@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.moonlightsplitter.belajarcompose.data.model.ArtModel
 import com.moonlightsplitter.belajarcompose.ui.theme.BelajarComposeTheme
 
@@ -64,8 +65,6 @@ fun ParentContent() {
         .padding(start = 16.dp, end = 16.dp)
     ) {
         val (containerButton, containerDescription, containerImage) = createRefs()
-        val bottomGuideLine = createGuidelineFromBottom(16.dp)
-        val topGuideLine = createGuidelineFromTop(16.dp)
         Image(
             painter = painterResource(data.image),
             contentDescription = null,
@@ -74,8 +73,10 @@ fun ParentContent() {
                 .constrainAs(containerImage) {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
-                    top.linkTo(topGuideLine)
-                    bottom.linkTo(containerDescription.top)
+                    top.linkTo(parent.top, margin = 16.dp)
+                    bottom.linkTo(containerDescription.top, margin = 16.dp)
+                    width = Dimension.fillToConstraints
+                    height = Dimension.fillToConstraints
                 }
                 .fillMaxWidth()
                 .height(IntrinsicSize.Max)
@@ -108,7 +109,7 @@ fun ParentContent() {
                 .constrainAs(containerButton) {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
-                    bottom.linkTo(bottomGuideLine)
+                    bottom.linkTo(parent.bottom, margin = 16.dp)
                 }
         ) {
             Button(
