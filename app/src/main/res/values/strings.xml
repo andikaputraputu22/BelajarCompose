@@ -38,4 +38,6 @@
     <string name="title_activity_woof">WoofActivity</string>
     <string name="years_old">%d years old</string>
     <string name="woof">Woof</string>
+    <string name="expand_button_content_description">See more or less information about a dog.</string>
+    <string name="about">About</string>
 </resources>
