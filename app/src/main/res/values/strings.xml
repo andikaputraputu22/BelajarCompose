@@ -35,4 +35,7 @@
     <string name="affirmation4">Every challenge in my life is an opportunity to learn from.</string>
     <string name="affirmation5">I have so much to be grateful for.</string>
     <string name="title_activity_affirmation">AffirmationActivity</string>
+    <string name="title_activity_woof">WoofActivity</string>
+    <string name="years_old">%d years old</string>
+    <string name="woof">Woof</string>
 </resources>
